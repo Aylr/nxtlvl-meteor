@@ -1,0 +1,13 @@
+<template name="cardsListContainer">
+	<div class="cardsList">
+		<h2>Card List</h2>
+		<div class="cardButtons">
+			<button class="addCard btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Add Card</button>
+		</div>
+		<div class="cards">
+		{{#each cards}}
+			{{> cardDisplay}}
+		{{/each}}
+		</div>
+	</div>
+</template>

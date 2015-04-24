@@ -1,0 +1,12 @@
+<template name="cardDisplay">
+	<div class="card">
+		<h3><a href="{{pathFor 'cardPage'}}">{{title}} :: Level <span class="level">{{level}}</span>
+		<span class="levelStars">{{{levelStarGlyphs}}}</span></a></h3>
+		{{# each this.items}}
+			{{> item}}
+		{{/each}}
+		<div class="cardButtons">
+			<button class="addItem btn btn-primary" name="{{this._id}}"><span class="glyphicon glyphicon-plus-sign"></span></button>
+		</div>
+	</div>
+</template>

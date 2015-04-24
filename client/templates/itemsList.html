@@ -1,0 +1,10 @@
+<template name="itemsList">
+	<h2>Items</h2>
+	<div class="items">
+		<ul>
+		{{# each this.items}}
+			{{> item}}
+		{{/each}}
+		</ul>
+	</div>
+</template>
