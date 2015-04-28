@@ -5,6 +5,8 @@
 # but you can also edit it by hand.
 
 meteor-platform
-insecure
 twbs:bootstrap
 iron:router
+ian:accounts-ui-bootstrap-3
+accounts-password
+insecure

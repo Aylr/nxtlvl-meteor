@@ -2,11 +2,18 @@
 	<div class="card">
 		<h3><a href="{{pathFor 'cardPage'}}">{{title}} :: Level <span class="level">{{level}}</span>
 		<span class="levelStars">{{{levelStarGlyphs}}}</span></a></h3>
-		{{# each this.items}}
-			{{> item}}
-		{{/each}}
-		<div class="cardButtons">
-			<button class="addItem btn btn-primary" name="{{this._id}}"><span class="glyphicon glyphicon-plus-sign"></span></button>
+		<div class="items">
+			<h4>Items <em>Stars Count **fix me**: {{count_item_stars}}</em></h4>
+			<ul>
+				{{# each this.items}}
+					{{> item}}
+				{{/each}}
+			</ul>
 		</div>
+		<div class="cardButtons">
+			<button class="addItem btn btn-primary" name="{{this._id}}"><span class="glyphicon glyphicon-plus-sign"></span> Add Item</button>
+			{{{archive_or_unarchive_button}}}
+		</div>
+		
 	</div>
 </template>

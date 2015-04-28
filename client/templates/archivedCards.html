@@ -1,0 +1,10 @@
+<template name="archivedCardsTemplate">
+	<div class="cardsList">
+		<h2>Archived Card List</h2>
+		<div class="cards">
+		{{#each archived_cards}}
+			{{> cardDisplay}}
+		{{/each}}
+		</div>
+	</div>
+</template>

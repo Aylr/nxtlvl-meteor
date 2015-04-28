@@ -1,4 +1,21 @@
 <template name="layout">
-  <h1><a href="{{pathFor 'cardsListContainer'}}">NXTLVL</a></h1>
-  {{> yield}}
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collap
+			se" data-target="#navigation">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="{{pathFor 'activeCardsTemplate'}}">NXTLVL</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navigation">
+			<ul class="nav navbar-nav navbar-right">
+			{{> loginButtons}}
+			<li><a href="{{pathFor 'archivedCardsTemplate'}}">Archive</a></li>
+			</ul>
+		</div>
+	</nav>
+	{{> yield}}
 </template>

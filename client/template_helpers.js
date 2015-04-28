@@ -1,24 +1,14 @@
-Template.cardsListContainer.helpers({
+Template.activeCardsTemplate.helpers({
 	cards: function(){
-		return Cards.find();
+		return Cards.find({archived: false});
 	}
-	// ,
-	// items: function(){
-	// 	return Items.find();
-	// }
 });
 
-// Template.itemsList.helpers({
-// 	items: function(){
-// 		return Items.find();
-// 	}
-// });
 
 Template.cardDisplay.helpers({
-	// items: function(){
-	// 	return Items.find();
-	// },
 	levelStarGlyphs: function(){
+		// sanitize level to make sure it's a number...
+
 		var stars = "";
 		var singleStar = '<span class="glyphicon glyphicon-certificate"></span>';
 
@@ -26,6 +16,35 @@ Template.cardDisplay.helpers({
 			stars += singleStar;
 		}
 		return stars;
+	},
+	archive_or_unarchive_button: function(){
+		if(this.archived){
+			return '<button class="btn btn-info" id="unarchive_card"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;Unarchive Card</button>';
+		}else{
+			return '<button class="btn btn-warning" id="archive_card"><span class="glyphicon glyphicon-folder-close"></span> &nbsp;Archive Card</button>';
+		}
+	},
+	count_item_stars: function(){
+		var stars = 0;
+		var temp_items = this.items;
+		console.log("temp_items: ");
+		console.log(temp_items);
+		console.log("temp_items.length: ");
+		console.log(temp_items.length);
+		for(i=0;i<temp_items.length;i++){
+			if(temp_items[i].star){
+				stars += 1;
+			}
+		}
+		console.log("counting stars: "+ stars);
+		return stars;
 	}
 });
 
+
+Template.archivedCardsTemplate.helpers({
+	archived_cards: function(){
+		return Cards.find({archived: true});
+		//how do you return cards that do not have and "archived" property?
+	}
+});
