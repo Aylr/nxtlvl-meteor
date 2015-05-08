@@ -27,16 +27,16 @@ Template.cardDisplay.helpers({
 	count_item_stars: function(){
 		var stars = 0;
 		var temp_items = this.items;
-		console.log("temp_items: ");
-		console.log(temp_items);
-		console.log("temp_items.length: ");
-		console.log(temp_items.length);
+		// console.log("temp_items: ");
+		// console.log(temp_items);
+		// console.log("temp_items.length: ");
+		// console.log(temp_items.length);
 		for(i=0;i<temp_items.length;i++){
 			if(temp_items[i].star){
 				stars += 1;
 			}
 		}
-		console.log("counting stars: "+ stars);
+		// console.log("counting stars: "+ stars);
 		return stars;
 	}
 });
@@ -44,7 +44,13 @@ Template.cardDisplay.helpers({
 
 Template.archivedCardsTemplate.helpers({
 	archived_cards: function(){
-		return Cards.find({archived: true});
-		//how do you return cards that do not have and "archived" property?
+		return Cards.find(
+			{
+				$or: [
+					{archived: true},						// find docs that have archived: true
+					{'archived': {$exists: false}}			// and that do not have an archived field
+				]
+			}
+		);
 	}
 });

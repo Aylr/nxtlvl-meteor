@@ -3,10 +3,11 @@
 		<h3><a href="{{pathFor 'cardPage'}}">{{title}} :: Level <span class="level">{{level}}</span>
 		<span class="levelStars">{{{levelStarGlyphs}}}</span></a></h3>
 		<div class="items">
-			<h4>Items <em>Stars Count **fix me**: {{count_item_stars}}</em></h4>
+			<h4>Items <em>Stars Count: {{count_item_stars}}</em></h4>
 			<ul>
 				{{# each this.items}}
-					{{> item}}
+					<li class="item"><span class="glyphicon {{#if star}}glyphicon-star{{else}}glyphicon-star-empty{{/if}}"></span>
+	:: {{title}}</li>
 				{{/each}}
 			</ul>
 		</div>
