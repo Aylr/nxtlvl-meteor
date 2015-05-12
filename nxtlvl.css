@@ -16,3 +16,14 @@ div.card h3 {
 	margin: 0;
 	padding: 0;
 }
+
+div.items ul.items {
+	margin: 0 0 1em .5em;
+	padding: 0;
+	list-style-type: none;
+}
+
+div.items span.item_star {
+	font-size: 20px;
+	vertical-align: middle;
+}

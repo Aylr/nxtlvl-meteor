@@ -41,6 +41,15 @@ Template.cardDisplay.helpers({
 	}
 });
 
+Template.cardDisplay.onRendered(function() {
+	$(document).ready(function() {
+	    // $(".editable").editable();
+
+		$('div.items').editable({
+			selector: 'a'
+		});
+	});
+})
 
 Template.archivedCardsTemplate.helpers({
 	archived_cards: function(){

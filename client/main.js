@@ -1,6 +1,5 @@
 Meteor.subscribe('cards');
 
-
 Template.cardPage.events({
 	'click button#deleteCard': function(){
 		Cards.remove(this._id,function(){
@@ -24,6 +23,8 @@ Template.cardDisplay.events({
 
 		Cards.update(this._id, {$set: tempItems});			// mongo set new array
 
+		update_editable();
+
 		console.log({ID: this._id, items: tempItems});
 	},
 	'click button#archive_card': function(){
@@ -32,18 +33,12 @@ Template.cardDisplay.events({
 	'click button#unarchive_card': function(){
 		Cards.update(this._id, {$set: {archived: false}});
 	},
-	'click li.item': function(event, template){
+	'click li.item span.item_star': function(event, template){
 		var temp_star = this.star;
-		//var temp_items = Cards.items;
 		var temp_parent_id = template.data._id;
 		var temp_item_id = this._id._str;
 
-
-		if(temp_star){
-			temp_star = false;
-		}else{
-			temp_star = true;
-		}
+		temp_star = !temp_star			// toggle false <--> true
 
 
 		// console.log("this.star");
@@ -57,10 +52,10 @@ Template.cardDisplay.events({
 		// console.log("template.data._id");
 		// console.log(template.data._id);
 
-		var container = {parent_id: temp_parent_id, item_id: temp_item_id, star: temp_star};
+		var item_to_update = {parent_id: temp_parent_id, item_id: temp_item_id, star: temp_star};
 
 		console.log("calling update_star method.");
-		Meteor.call("update_star", container);
+		Meteor.call("update_star", item_to_update);
 	}
 });
 

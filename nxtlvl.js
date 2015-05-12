@@ -1,4 +1,5 @@
 if (Meteor.isClient) {
+	$.fn.editable.defaults.mode = 'inline';
 }
 
 if (Meteor.isServer) {
